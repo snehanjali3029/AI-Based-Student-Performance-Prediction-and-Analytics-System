@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+.streamlit/secrets.toml
+database/*.db
+data/raw/*
+data/processed/*
+data/uploads/*
+models/model_registry/*
+models/preprocessor/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/uploads/.gitkeep
+!models/model_registry/.gitkeep
+!models/preprocessor/.gitkeep
+
+!models/model_registry/performance_model.joblib
