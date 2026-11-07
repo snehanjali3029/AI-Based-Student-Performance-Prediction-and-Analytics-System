@@ -206,7 +206,7 @@ def render(user):
             return
 
         # Latest available academic record
-        base = records.iloc[-1].to_dict()
+        base = records.iloc[0].to_dict()
 
     except Exception as exc:
 

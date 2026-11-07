@@ -10,7 +10,6 @@ from src.feature_engineering.features import FEATURE_COLUMNS
 
 # --------------------------------------------------
 # MODEL FILE PATH
-# Must match train_model.py
 # --------------------------------------------------
 
 MODEL_PATH = (
@@ -158,10 +157,10 @@ def validate_student_record(record):
             "Study hours cannot exceed 24 per day."
         )
 
-    # CGPA validation
-    if validated["Previous_CGPA"] < 0:
+    # CGPA validation (0-10 scale)
+    if not 0 <= validated["Previous_CGPA"] <= 10:
         raise ValueError(
-            "Previous CGPA cannot be negative."
+            "Previous CGPA must be between 0 and 10."
         )
 
     # Backlog validation
@@ -210,7 +209,7 @@ def predict_student(record):
             "Model returned an invalid prediction."
         )
 
-    # Final marks are on a 0-100 scale in the current model
+    # Final marks are on a 0-100 scale
     predicted_marks = max(
         0.0,
         min(100.0, predicted_marks)
